@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nosso Amor ❤️</title>
+  <style>
+    /* ... (mesmo CSS do anterior, mantido para responsividade e estilo) ... */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #c71585;
+      margin-bottom: 20px;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .timer {
+      font-size: 1.2em;
+      padding: 0 10px;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6em;
+      }
+
+      .timer {
+        font-size: 1em;
+      }
+
+      footer {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz Dia dos Namorados, Amor! 💖</h1>
+
+  <div class="slideshow-container">
+    <div class="slide"><img src="img1.png" alt="Foto 1" /></div>
+    <div class="slide"><img src="img2.png" alt="Foto 2" /></div>
+    <div class="slide"><img src="img3.png" alt="Foto 3" /></div>
+    <div class="slide"><img src="img4.jpeg" alt="Foto 4" /></div>
+  </div>
+
+  <div class="timer" id="tempoPassado">
+    Carregando tempo juntos...
+  </div>
+
+  <div class="timer" id="tempoApaixonado" style="margin-top: 15px; color: #c71585; font-weight: 600;">
+    Carregando paixão...
+  </div>
+
+  <footer>Feito com amor por Pedro 💌</footer>
+
+  <script>
+    // Slideshow automático
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName('slide');
+
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = 'block';
+      setTimeout(showSlides, 3000);
+    }
+
+    showSlides();
+
+    // Função que calcula tempo decorrido e formata string
+    function formatTempoPassado(dataInicio) {
+      const agora = new Date();
+      const diff = agora - dataInicio;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      return `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+    }
+
+    function atualizarTempos() {
+      const dataInicioJuntos = new Date('2024-08-08T00:00:00');
+      const dataInicioApaixonado = new Date('2024-04-26T00:00:00');
+
+      document.getElementById(
+        'tempoPassado'
+      ).innerHTML = `Namoramos há ${formatTempoPassado(dataInicioJuntos)}! 💘`;
+
+      document.getElementById(
+        'tempoApaixonado'
+      ).innerHTML = `Mas estou apaixonado a
+        ${formatTempoPassado(dataInicioApaixonado)} ❤️`;
+    }
+
+    setInterval(atualizarTempos, 1000);
+    atualizarTempos();
+  </script>
+</body>
+</html>
